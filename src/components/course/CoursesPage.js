@@ -11,7 +11,7 @@ class CoursesPage extends React.Component {
       course: {
         title: ""
       }
-    }
+    };
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
@@ -32,7 +32,7 @@ class CoursesPage extends React.Component {
   courseRow(course, index) {
     return (
       <div key={index}>{course.title}</div>
-    )
+    );
   }
 
   render() {
@@ -52,19 +52,19 @@ CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
   createCourse: PropTypes.func.isRequired
   // actions: PropTypes.object.isRequired
-}
+};
 
 function mapStateToProps(state, ownProps) {
   return {
     courses: state.courses
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     createCourse: course => dispatch(courseActions.createCourse(course))
     // actions: bindActionCreators(courseActions, dispatch)
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
