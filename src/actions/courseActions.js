@@ -8,6 +8,20 @@ export function loadCoursesSuccess(courses) {
   };
 }
 
+export function createCourseSuccess(course) {
+  return {
+    type: types.CREATE_COURSE_SUCCESS,
+    course: course
+  }
+}
+
+export function updateCourseSuccess(course) {
+  return {
+    type: types.UPDATE_COURSE_SUCCESS,
+    course: course
+  }
+}
+
 export function loadCourses() {
   return function (dispatch) {
     return courseApi.getAllCourses().then(courses => {
@@ -16,4 +30,15 @@ export function loadCourses() {
       throw (error);
     });
   };
+}
+
+export function saveCourse(course) {
+  return function (dispatch, getState) {
+    return courseApi.saveCourse(course).then(savedCourse => {
+      course.id ? dispatch(updateCourseSuccess(savedCourse)) :
+        dispatch(createCourseSuccess(savedCourse));
+    }).catch(error => {
+      throw (error);
+    })
+  }
 }

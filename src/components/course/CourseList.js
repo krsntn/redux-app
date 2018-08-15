@@ -1,7 +1,4 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import * as courseActions from '../../actions/courseActions';
-import { bindActionCreators } from 'redux';
 import CourseListRow from './CourseListRow';
 
 const CourseList = ({ courses }) => {
